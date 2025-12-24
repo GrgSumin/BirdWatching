@@ -36,9 +36,9 @@ class DatabaseHelper(private val context: Context ) : SQLiteOpenHelper(context, 
 
         return db.insert(TABLE_NAME,null, values)
     }
-    fun readUSer(username: String, password: String): Boolean{
+    fun readUser(username: String, password: String): Boolean{
         val db = readableDatabase
-        val selection = "$COLUMN_USERNAME = ? AND $COLUMN_PASSWORD"
+        val selection = "$COLUMN_USERNAME = ? AND $COLUMN_PASSWORD = ?"
         val selectionArgs = arrayOf(username, password)
         val curser = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)
         val userExists = curser.count > 0
